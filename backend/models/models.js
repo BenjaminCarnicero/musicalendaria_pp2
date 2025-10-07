@@ -13,12 +13,12 @@ exports.findUserByEmail = (email, callback) => {
 
 // Registrar usuario
 exports.registerUser = (userData, callback) => {
-    const { nombre, email, password } = userData;
+    const { nombre, email, password, rol } = userData;
     const query = `
-        INSERT INTO usuarios (nombre, email, password)
-        VALUES (?, ?, ?)
+        INSERT INTO usuarios (nombre, email, password, rol)
+        VALUES (?, ?, ?, ?)
     `;
-    db.query(query, [nombre, email, password], (err, result) => {
+    db.query(query, [nombre, email, password, rol], (err, result) => {
         if (err) {
             console.error('❌ Error al insertar en usuarios:', err);
         } else {

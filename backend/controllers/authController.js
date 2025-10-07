@@ -1,10 +1,19 @@
 const models = require('../models/models'); 
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Clave secreta para JWT (podes moverla a .env)
+const SECRET_KEY = "supersecreto123";
+
 
 // Registrar usuario
 const registerUser = (req, res) => {
-    const { nombre, email, password } = req.body;
+    const { nombre, email, password, rol } = req.body;
     console.log("📥 Llegó la petición de registro:", req.body);
+
+    if (!rol) {
+        return res.status(400).json({ message: 'El rol es obligatorio' });
+    }
 
     // Verificar que el usuario no exista primero
     models.findUserByEmail(email, (err, results) => {
@@ -38,4 +47,36 @@ const registerUser = (req, res) => {
     });
 };
 
-module.exports = { registerUser };
+// Login de usuario
+const loginUser = (req, res) => {
+    const { email, password } = req.body;
+
+    models.findUserByEmail(email, (err, results) => {
+        if (err) return res.status(500).json({ message: 'Error en el servidor' });
+
+        if (results.length === 0) {
+            return res.status(400).json({ message: 'Usuario no encontrado' });
+        }
+
+        const user = results[0];
+
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+            if (err) return res.status(500).json({ message: 'Error en el servidor' });
+
+            if (!isMatch) {
+                return res.status(401).json({ message: 'Contraseña incorrecta' });
+            }
+
+            // Crear token
+            const token = jwt.sign(
+                { id: user.id, email: user.email, rol: user.rol || null },
+                SECRET_KEY,
+                { expiresIn: '2h' }
+            );
+
+            res.json({ message: 'Login exitoso', token });
+        });
+    });
+};
+
+module.exports = { registerUser, loginUser };

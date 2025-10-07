@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const nombre = document.getElementById('nombre').value.trim();
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
+        const rol = document.getElementById('rol').value;
 
-        const userData = { nombre, email, password };
+        const userData = { nombre, email, password, rol };
 
         try {
           
