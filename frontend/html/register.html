@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - Musicalendaria</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Registro de usuario</h2>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="email" id="email" placeholder="Correo electrónico">
+    <input type="password" id="password" placeholder="Contraseña">
+    <select id="rol">
+      <option value="" disabled selected>Seleccionar rol</option>
+      <option value="artista">Artista</option>
+      <option value="administrador">Administrador</option>
+    </select>
+   
+    <button onclick="registrar()">Registrarse</button>
+  </div>
+  <script src="../js/register.js"></script>
+</body>
+</html>

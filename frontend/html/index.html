@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musicalendaria</title>
+  <meta charset="UTF-8">
+  <title>Musicalendaria - Cartelera</title>
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <h1>Bienvenido a Musicalendaria!</h1>
+  <header style="display:flex; justify-content:space-between; align-items:center; padding:10px; background:#222;">
+    <h1 style="color:white;">🎶 Musicalendaria</h1>
+    <div>
+      <button onclick="location.href='login.html'">Iniciar sesión</button>
+      <button onclick="location.href='register.html'">Registrarse</button>
+    </div>
+  </header>
 
-    <h2>Registrarse</h2>
-    <form id="formRegister">
-        <input type="text" id="nombre" placeholder="Nombre completo" required />
-        <input type="email" id="email" placeholder="Correo electrónico" required />
-        <input type="password" id="password" placeholder="Contraseña" required />
-        
-        
-        <label for="rol">Seleccioná tu rol:</label>
-        <select id="rol" required>
-            <option value="">-- Elegir rol --</option>
-            <option value="usuario">Usuario</option>
-            <option value="artista">Artista</option>
-        </select>
-        
-        <button type="submit">Registrarse</button>
-    </form>
+  <div class="container">
+    <h2>Cartelera de espectáculos</h2>
+    <div id="eventos"></div>
+  </div>
 
-    <p id="register-message"></p>
-
-    <p>¿Ya tenés cuenta? <a href="login.html">Iniciar sesión</a></p>
-
-    <script src="../js/register.js"></script>
+  <script src="../js/cartelera.js"></script>
 </body>
 </html>
-

@@ -14,6 +14,12 @@ const registerUser = (req, res) => {
     if (!rol) {
         return res.status(400).json({ message: 'El rol es obligatorio' });
     }
+    
+    // Usuarios prohibidos
+    const forbiddenNames = ['Eminem', 'Dua Lipa', 'Catriel', 'Paco Amoroso'];
+    if (forbiddenNames.includes(nombreArtistico.trim())) {
+    return res.status(403).json({ error: 'Este artista no está permitido en la plataforma.' });
+    }
 
     // Verificar que el usuario no exista primero
     models.findUserByEmail(email, (err, results) => {
