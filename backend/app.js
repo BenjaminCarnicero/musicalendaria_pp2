@@ -43,7 +43,8 @@ app.use('/api/auth', authRoutes);
 // app.get('/', (req, res) => {
 //   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 // });
-
+// const artistRoutes = require('./routes/artistRoutes');
+// app.use('/api/artist', artistRoutes);
 
 // // Ruta simple para probar que el servidor anda
 app.get('/', (req, res) => {
