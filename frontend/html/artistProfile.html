@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil del Artista - Musicalendaria</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="profile-page">
+
+  <!-- Barra superior con título -->
+  <header class="topbar">
+    <h2>Perfil del Artista</h2>
+  </header>
+
+  <!-- Contenedor principal del perfil -->
+  <main class="artist-profile">
+
+    <!-- Sección con la foto y datos principales -->
+    <section class="artist-hero">
+      <img id="fotoPerfil" class="artist-photo" alt="Foto del artista">
+      <div class="artist-info">
+        <h1 id="nombre">Nombre del Artista</h1>
+        <p id="bio" class="artist-bio"></p>
+
+        <!-- Enlaces a redes sociales -->
+        <div class="artist-links">
+          <a id="instagram" href="#" target="_blank">Instagram</a>
+          <a id="twitter" href="#" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enlaces a música -->
+    <section class="artist-music">
+      <h3>Música</h3>
+      <div class="music-links">
+        <a id="spotify" href="#" target="_blank">Spotify</a>
+        <a id="youtube" href="#" target="_blank">YouTube</a>
+      </div>
+    </section>
+
+    <!-- Listado de próximos shows -->
+    <section class="artist-shows">
+      <h3>Próximas presentaciones</h3>
+      <ul id="presentaciones" class="show-list"></ul>
+    </section>
+
+  </main>
+
+  <!-- Archivo JS con la lógica -->
+  <script src="../js/artistProfile.js"></script>
+</body>
+</html>

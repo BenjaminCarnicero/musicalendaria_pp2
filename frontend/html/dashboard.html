@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Musicalendaria</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <button id="abrirMenu" class="menu-btn">☰</button>
+    <h1>Panel del Artista</h1>
+    <div id="miniPerfil" class="mini-perfil">
+      <img src="../assets/default-avatar.png" alt="Perfil">
+    </div>
+  </header>
+
+  <!-- Menú lateral -->
+  <aside id="menuLateral" class="sidebar">
+    <button id="cerrarMenu" class="close-btn">×</button>
+    <nav>
+      <ul>
+        <li><a href="artistProfile.html">Ver perfil público</a></li>
+        <li><a href="billboard.html">Cartelera</a></li>
+        <li><a href="#" id="logoutBtn">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Contenido principal -->
+  <main class="dashboard-container">
+    <section id="artistInfo" class="artist-info">
+      <h2>Bienvenido, <span id="artistName">Artista</span> 🎶</h2>
+      <p id="artistEmail"></p>
+      <img id="artistPhoto" class="artist-photo" alt="Foto del artista">
+    </section>
+
+    <section class="dashboard-actions">
+      <button id="editProfileBtn" class="btn">Editar perfil</button>
+      <button id="viewShowsBtn" class="btn">Ver mis presentaciones</button>
+    </section>
+
+    <section id="showsList" class="shows-list hidden">
+      <h3>Tus próximas presentaciones</h3>
+      <ul id="shows"></ul>
+    </section>
+  </main>
+
+  <script src="../js/menu.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,47 +1,356 @@
-/* styles.css */
+/* ======================================================
+   🎧 MUSICANDELARIA - ESTILO GENERAL (TEMA OSCURO)
+====================================================== */
+
+/* ---------- BASE ---------- */
+:root {
+  --primary: #1db954;
+  --bg-dark: #121212;
+  --bg-panel: #181818;
+  --bg-card: #1a1a1a;
+  --text-light: #f5f5f5;
+  --border-dark: #2a2a2a;
+  --error: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: #fff;
   margin: 0;
-  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.container {
-  max-width: 400px;
-  margin: 80px auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+a:hover {
+  text-decoration: underline;
 }
 
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-}
-
+/* Botones */
 button {
-  width: 100%;
-  padding: 10px;
-  background-color: #00c6ff;
+  background-color: var(--primary);
   border: none;
-  border-radius: 5px;
-  color: #000;
-  font-weight: bold;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
 }
 
 button:hover {
-  background-color: #0072ff;
-  color: #fff;
+  background-color: #18a04b;
 }
 
+/* Inputs */
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background-color: #1e1e1e;
+  color: var(--text-light);
+}
+
+textarea {
+  resize: vertical;
+}
+
+label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* Mensajes */
+#message, #loginMessage {
+  margin-top: 10px;
+  color: var(--error);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---------- HEADER Y MENÚ ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-panel);
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-dark);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.menu-toggle, .close-btn {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Menú lateral */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 240px;
+  height: 100%;
+  background-color: var(--bg-panel);
+  padding-top: 60px;
+  transition: left 0.3s;
+  z-index: 999;
+  border-right: 1px solid var(--border-dark);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 6px;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 998;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Perfil mini */
+.profile-menu {
+  position: relative;
+}
+
+.profile-mini {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.dropdown button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  text-align: left;
+  padding: 8px;
+}
+
+.dropdown button:hover {
+  background-color: #333;
+}
+
+/* ---------- LOGIN / REGISTRO ---------- */
+.login-page, .register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+}
+
+.form-container {
+  background: var(--bg-card);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-container h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.form-container p {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.form-container a {
+  color: var(--primary);
+}
+
+/* ---------- DASHBOARD ---------- */
+.dashboard-container {
+  padding: 20px;
+  flex: 1;
+}
+
+.dashboard-section {
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.dashboard-section h2 {
+  margin-top: 0;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border-dark);
+  padding-bottom: 5px;
+}
+
+/* Perfil artista */
+.artist-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-panel);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.artist-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  object-fit: cover;
+}
+
+/* Presentaciones */
+.show-card {
+  background: #222;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.show-card strong {
+  color: var(--primary);
+}
+
+/* ---------- CARTELERA (BILLBOARD) ---------- */
+.billboard-container {
+  padding: 30px;
+}
+
+.billboard-title {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.billboard-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.billboard-card {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+
+.billboard-card:hover {
+  transform: scale(1.02);
+}
+
+.billboard-card h3 {
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.billboard-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .artist-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .artist-photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .dashboard-section {
+    padding: 15px;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .topbar h2 {
+    font-size: 1rem;
+  }
+
+  .form-container {
+    padding: 25px;
+  }
+}

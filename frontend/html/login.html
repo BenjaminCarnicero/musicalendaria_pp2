@@ -1,9 +1,36 @@
-<!-- login.html -->
- <link rel="stylesheet" href="../css/styles.css">
-<div class="container">
-  <h2>Iniciar sesión</h2>
-  <input type="email" id="email" placeholder="Correo electrónico">
-  <input type="password" id="password" placeholder="Contraseña">
-  <button onclick="login()">Ingresar</button>
-</div>
-<script src="../js/login.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <!-- codificación UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- diseño responsive -->
+  <title>Login - Musicalendaria</title>
+  <link rel="stylesheet" href="../css/styles.css"> <!-- estilos -->
+</head>
+<body class="login-page"> <!-- clase general para aplicar estilos al fondo o layout -->
+  
+  <!-- Contenedor principal del formulario -->
+  <form class="form-container" id="loginForm">
+    <h2>Iniciar Sesión</h2>
+
+    <!-- Campo para usuario o correo -->
+    <label for="loginUsuario">Usuario o Email:</label>
+    <input type="text" id="loginUsuario" required>
+
+    <!-- Campo de contraseña -->
+    <label for="loginPassword">Contraseña:</label>
+    <input type="password" id="loginPassword" required>
+
+    <!-- Botón de envío -->
+    <button type="submit">Iniciar Sesión</button>
+
+    <!-- Mensaje dinámico (error o éxito) -->
+    <p id="loginMessage"></p>
+
+    <!-- Enlace hacia el registro -->
+    <p>¿No tenés cuenta? <a href="register.html">Registrate acá</a></p>
+  </form>
+
+  <!-- Script con la lógica del login -->
+  <script src="../js/login.js"></script>
+</body>
+</html>
