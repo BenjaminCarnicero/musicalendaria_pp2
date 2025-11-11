@@ -29,13 +29,27 @@ async function login(username, password) {
     // Si las credenciales son correctas, genera un token JWT
     const newToken = token.assignToken({ id: user.id, usuario: user.usuario });
 
+    // Si el usuario es artista, buscamos su perfil en la tabla artistas
+    let artistaId = null;
+    if (user.rol === 'artist') {
+        const artistRows = await db.queryRaw('SELECT id FROM artistas WHERE user_id = ?', [user.id]);
+        if (artistRows.length > 0) {
+            artistaId = artistRows[0].id;
+        }
+    }
+
+  console.log("🧪 Login exitoso:", {
+    userId: user.id,
+    rol: user.rol,
+    artistaId
+  });
+
     // Devuelve el token y el ID del usuario
     return {
-        token: newToken,
-        id: user.id,
-        rol: user.rol
-
-    };
+  token: newToken,
+  id: user.rol === 'artist' ? artistaId : user.id,
+  rol: user.rol
+};
 }
 
 // --- REGISTRO: crea un nuevo artista + credenciales ---
@@ -63,11 +77,20 @@ async function register(data) {
   const userId = authInsert.insertId;
 
   // 3. Si el rol es artista, crear perfil en tabla artistas
-  if (data.rol === 'artist') {
+  if (data.rol === 'artista') {
     await artistController.addArtist({
       user_id: userId,
       name: data.nombre,
-      email: data.email
+      email: data.email,
+      phone: null,
+      photo: null,
+      portfolio: null,
+      spotify: null,
+      apple_music: null,
+      tidal: null,
+      youtube_music: null,
+      youtube_channel: null,
+      instagram: null
     });
   }
 

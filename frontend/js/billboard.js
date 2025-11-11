@@ -29,7 +29,7 @@ let allShows = []; // Guarda todos los espectáculos cargados
 //   }
 // }
 //----------------------------------
-const token = sessionStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 const loginBtn = document.getElementById('btnLogin');
 const logoutBtn = document.getElementById('btnLogout');
@@ -42,7 +42,7 @@ if (token) {
   if (logoutBtn) {
     logoutBtn.style.display = 'inline-block';
     logoutBtn.addEventListener('click', () => {
-      sessionStorage.clear();
+      localStorage.clear();
       window.location.reload(); // recarga la cartelera como visitante
     });
   }
@@ -57,7 +57,7 @@ if (token) {
 // === CARGAR CARTELERA DESDE EL BACKEND ===
 async function loadBillboard() {
   try {
-    const res = await fetch("http://localhost:3000/api/shows"); // GET al backend
+    const res = await fetch("http://localhost:3000/api/events"); // GET al backend
     const data = await res.json();
 
     console.log("Respuesta del backend:", data);

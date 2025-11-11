@@ -1,4 +1,4 @@
-// routes.js — Define los endpoints HTTP de autenticación (login y registro).
+// auth.js — Define los endpoints HTTP de autenticación (login y registro).
 // Usa el controlador y un helper response para respuestas uniformes.
 
 const express = require('express');

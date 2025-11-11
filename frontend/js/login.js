@@ -24,23 +24,34 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     const data = await res.json();
 
     // Si la respuesta es correcta
-    if (res.ok) {
-      // Guarda el token y el ID del usuario en sessionStorage (o localStorage si preferís mantener la sesión)
-      sessionStorage.setItem('token', data.token);
-      sessionStorage.setItem('userId', data.id);
-      sessionStorage.setItem('userRole', data.rol);
+  if (res.ok) {
+    // Guarda los datos en localStorage
+  localStorage.setItem('token', data.body.token);
+  localStorage.setItem('artistaId', data.body.id); // ahora id es el artistaId
+  localStorage.setItem('userRole', data.body.rol); // ✅ esto es clave
+  
 
-      // Muestra mensaje de éxito
-      document.getElementById('loginMessage').textContent = "Sesión iniciada. Redirigiendo...";
+  console.log("✅ Datos guardados en localStorage:", {
+    token: localStorage.getItem('token'),
+    userId: localStorage.getItem('userId'),
+    userRole: localStorage.getItem('userRole'),
+    artistaId: localStorage.getItem('artistaId')
+  });
 
-      // Redirige al dashboard o página principal
-      setTimeout(() => {
-        window.location.href = 'billboard.html';
-      }, 1000);
+  document.getElementById('loginMessage').textContent = "Sesión iniciada. Redirigiendo...";
+
+  // Redirige según el rol
+  setTimeout(() => {
+    if (data.rol === 'artist') {
+      window.location.href = 'dashboard.html';
     } else {
-      // Si hay error, muestra mensaje del backend o uno genérico
-      document.getElementById('loginMessage').textContent = data.error || "Credenciales incorrectas.";
+      window.location.href = 'billboard.html';
     }
+  }, 1000);
+} else {
+  document.getElementById('loginMessage').textContent = data.error || "Credenciales incorrectas.";
+}
+
 
   } catch (error) {
     // Captura errores de conexión o servidor

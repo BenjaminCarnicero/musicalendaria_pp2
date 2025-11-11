@@ -33,16 +33,25 @@
    <!-- Botón login -->
     <button id="btnLogin" class="btn-login" onclick="window.location.href='login.html'">Ingresar</button>
 
-  <!-- Botón logout (inicialmente oculto) -->
-    <button id="btnLogout" class="btn-logout" style="display: none;">Cerrar sesión</button>
+  
+    <div class="profile-menu">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Perfil" id="profileIcon" class="profile-mini">
+      <div id="profileMenu" class="dropdown">
+        <button onclick="window.location.href='dashboard.html'">Mi perfil</button>
+        <button onclick="localStorage.clear(); window.location.href='login.html'">Cerrar sesión</button>
+    </div>
+</div>
   </header>
 
   <!-- MENÚ LATERAL -->
-  <nav id="sideMenu" class="side-menu">
+  <nav id="sideMenu" class="sidebar">
     <button id="closeMenu" class="close-menu">❌</button>
     <ul>
       <li><a href="dashboard.html">Mi perfil</a></li>
       <li><a href="billboard.html">Cartelera</a></li>
+      <!-- Botón logout (inicialmente oculto) -->
+    <!-- <button id="btnLogout" class="btn-logout" style="display: none;">Cerrar sesión</button> -->
+      <li><button id="btnLogout">Cerrar sesión</button></li>
     </ul>
   </nav>
 

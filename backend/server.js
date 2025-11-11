@@ -37,7 +37,7 @@ app.use('/img', express.static(path.join(__dirname, 'img')));
 
 // --- RUTAS PRINCIPALES ---
 app.use('/api/auth', authRoutes);
-app.use('/api/artist', artistRoutes);
+app.use('/api/artists', artistRoutes);
 app.use('/api/events', eventRoutes);
 
 

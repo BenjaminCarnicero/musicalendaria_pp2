@@ -286,6 +286,24 @@ label {
   color: var(--primary);
 }
 
+/*------MINIPERFIL - ARTISTA-----------*/
+.mini-perfil {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mini-perfil img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.mini-perfil span {
+  font-weight: bold;
+  color: white;
+}
+
 /* ---------- CARTELERA (BILLBOARD) ---------- */
 .billboard-container {
   padding: 30px;
@@ -353,4 +371,39 @@ label {
   .form-container {
     padding: 25px;
   }
+}
+
+
+
+/*---------mensajes de exito/error----------*/
+.form-message {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: red;
+}
+.form-message.success {
+  color: green;
+}
+
+
+
+/*redes sociales*/
+.social-links {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.social-link:hover {
+  background-color: #ddd;
 }

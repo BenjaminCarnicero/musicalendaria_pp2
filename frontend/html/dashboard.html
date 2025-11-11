@@ -39,10 +39,59 @@
       <img id="artistPhoto" class="artist-photo" alt="Foto del artista">
     </section>
 
+    <section id="editProfileSection" class="edit-profile hidden">
+      <h3>Editar perfil</h3>
+      <form id="editProfileForm">
+        <label>Biografía:</label>
+        <textarea id="editBio"></textarea>
+
+        <label>Instagram:</label>
+        <input type="text" id="editInstagram">
+
+        <label>Spotify:</label>
+        <input type="text" id="editSpotify">
+
+        <label>Apple Music:</label>
+        <input type="text" id="editAppleMusic">
+
+        <label>YouTube Channel:</label>
+        <input type="text" id="editYouTube">
+
+        <label>Foto (URL):</label>
+        <input type="text" id="editFoto">
+
+        <p id="perfilStatus" class="hidden warning"></p>
+        <div id="artistLinks" class="social-links"></div>
+        <div id="editProfileMessage" class="form-message"></div>
+        <button type="submit" class="btn">Guardar cambios</button>
+        <button type="button" id="cancelEditBtn" class="btn">Cancelar</button>
+      </form>
+    </section>
+
     <section class="dashboard-actions">
       <button id="editProfileBtn" class="btn">Editar perfil</button>
       <button id="viewShowsBtn" class="btn">Ver mis presentaciones</button>
     </section>
+
+    <section id="newShowSection" class="hidden">
+      <h3>Crear nueva presentación</h3>
+      <form id="newShowForm">
+        <label>Título:</label>
+        <input type="text" id="newShowTitle">
+
+        <label>Fecha:</label>
+        <input type="date" id="newShowDate">
+
+        <label>Lugar:</label>
+        <input type="text" id="newShowPlace">
+
+        <button type="submit">Crear presentación</button>
+        <button type="button" id="cancelNewShowBtn">Cancelar</button>
+        <p id="newShowMessage"></p>
+      </form>
+    </section>
+
+<button id="newShowBtn">➕ Nueva presentación</button>
 
     <section id="showsList" class="shows-list hidden">
       <h3>Tus próximas presentaciones</h3>
@@ -50,7 +99,7 @@
     </section>
   </main>
 
-  <script src="../js/menu.js"></script>
   <script src="../js/dashboard.js"></script>
+  <script src="../js/menu.js"></script>
 </body>
 </html>
